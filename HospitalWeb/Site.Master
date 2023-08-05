@@ -17,9 +17,9 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
-<body >
-    <div class="d-flex justify-content-center" style="min-width: 1240px;">
-        <form runat="server" class = "col-md-8 border rounded" style="max-width: 80%;margin-top: 20px;margin-bottom: 20px;">
+<body style="background:#1e4ea5b8;" >
+    <div class="d-flex justify-content-center" style="min-width: 700px;">
+        <form runat="server" class = "col-md-8 border rounded" style="max-width: 80%;background: ghostwhite; margin-top: 5%;margin-bottom: 5%;">
             <asp:ScriptManager runat="server">
                 <Scripts>
                     <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -39,7 +39,7 @@
                 </Scripts>
             </asp:ScriptManager>
 
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark rounded-top">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark rounded-top" style="background: radial-gradient(#0d6efd, #115ecff2)!important;">
                 <div class="container">
                     <Label class="navbar-brand" runat="server" >Hospital</Label>
                     <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
@@ -48,9 +48,9 @@
                     </button>
                     <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item"><a class="nav-link" runat="server" href="~/">Personas</a></li>
-                            <li class="nav-item"><a class="nav-link" runat="server" href="~/FormMedico">Médicos</a></li>
-                            <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Pacientes</a></li>
+                            <li class="nav-item"><a class="nav-link" runat="server" href="~/Vistas/">Personas</a></li>
+                            <li class="nav-item"><a class="nav-link" runat="server" href="~/Vistas/FormMedico">Médicos</a></li>
+                            <li class="nav-item"><a class="nav-link" runat="server" href="~/Vistas/FormDatos">Pacientes</a></li>
                         </ul>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                     </asp:ContentPlaceHolder>
                     <hr />
                     <footer>
-                        <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
+                        <p>&copy; <%: DateTime.Now.Year %> - Hospital Javier Alvarez</p>
                     </footer>
                 </div>
             </div>

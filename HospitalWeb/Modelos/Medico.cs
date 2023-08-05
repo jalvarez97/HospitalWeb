@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace HospitalWeb.Clases
+namespace HospitalWeb.Modelos
 {
     public class Medico : Persona
     {
         public Medico() { }
 
-        public Medico(Persona p, int numcColegiado, string especialidad) : base(p.Nombre, p.Edad, p.Genero, p.DocIdentidad
+        public Medico(Persona p, int numcColegiado, string especialidad) : base(p.ID,p.Nombre, p.Edad, p.Genero, p.DocIdentidad
                                                                                ,p.Email, p.NumTelefono, "Medico")
         {
             NumColegiado = numcColegiado;

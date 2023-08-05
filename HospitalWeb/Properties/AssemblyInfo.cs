@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -6,12 +7,12 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Cambie los valores de estos atributos para modificar la información
 // asociada a un ensamblado.
 [assembly: AssemblyTitle("HospitalWeb")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("App hospital ejercicio")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Bald Solutions")]
 [assembly: AssemblyProduct("HospitalWeb")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("BaldNet")]
 [assembly: AssemblyCulture("")]
 
 // Si ComVisible se establece en false, los componentes COM no verán los 
@@ -33,3 +34,4 @@ using System.Runtime.InteropServices;
 // mediante el carácter '*', como se muestra a continuación:
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguage("es")]

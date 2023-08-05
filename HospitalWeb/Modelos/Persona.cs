@@ -1,13 +1,14 @@
 ﻿
-namespace HospitalWeb.Clases
+namespace HospitalWeb.Modelos
 {
     public class Persona
     {
         public Persona() { }
 
-        public Persona(string nombre, int edad, bool genero,
+        public Persona(int id, string nombre, int edad, bool genero,
                        string docIdentidad, string email, int numTelefono, string ocupacion)
         {
+            ID = id;
             Nombre = nombre;
             Edad = edad;
             Genero = genero;
@@ -22,6 +23,7 @@ namespace HospitalWeb.Clases
         }
 
         //propiedades
+        public int ID { get; set; }
         public string Nombre { get; set; }
         public int Edad { get; set; }
         public string Sexo { get; set; }
