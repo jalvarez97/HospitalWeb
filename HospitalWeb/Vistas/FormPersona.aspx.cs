@@ -19,7 +19,10 @@ namespace HospitalWeb
 
         protected void InicializarForm()
         {
-            Registro.GenerarRegistros();
+            if (Registro.Medicos.Count == 0) {
+                Registro.GenerarRegistros();
+            }
+            
             RellenarGrid();
             cboFiltro.SelectedIndex = 0;
         }       
@@ -29,13 +32,7 @@ namespace HospitalWeb
             grdPersonas.PageIndex = e.NewPageIndex;
             RellenarGrid();
         }
-
-        protected void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-            RellenarGrid();
-            txtBuscar.Text = string.Empty;
-        }
-
+              
         protected void grdPersonas_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.Header)
@@ -54,6 +51,11 @@ namespace HospitalWeb
         {
             txtBuscar.Focus();
         }
+        
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            RellenarGrid();            
+        }
 
         protected void RellenarGrid()
         {
@@ -62,11 +64,9 @@ namespace HospitalWeb
 
             grdPersonas.DataSource = source;
             grdPersonas.DataBind();
-
-            if (source.Count > 0)
-            {
+            
+            if (!this.IsPostBack)
                 txtBuscar.Focus();
-            }
         }
     }
 }

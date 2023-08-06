@@ -106,7 +106,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -125,7 +124,9 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Vistas\FormDatosPaciente.aspx" />
     <Content Include="Vistas\FormDatosMedico.aspx" />
+    <Content Include="Vistas\FormPaciente.aspx" />
     <Content Include="Vistas\FormMedico.aspx" />
     <Content Include="Vistas\FormPersona.aspx" />
     <Content Include="Global.asax" />
@@ -157,7 +158,6 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="Jav.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -198,8 +198,16 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controladores\CtrlPaciente.cs" />
     <Compile Include="Controladores\CtrlPersona.cs" />
     <Compile Include="Controladores\CtrlMedico.cs" />
+    <Compile Include="Vistas\FormDatosPaciente.aspx.cs">
+      <DependentUpon>FormDatosPaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vistas\FormDatosPaciente.aspx.designer.cs">
+      <DependentUpon>FormDatosPaciente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\FormDatosMedico.aspx.cs">
       <DependentUpon>FormDatosMedico.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -207,17 +215,17 @@
     <Compile Include="Vistas\FormDatosMedico.aspx.designer.cs">
       <DependentUpon>FormDatosMedico.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modelos\Automatizacion.cs" />
+    <Compile Include="ScriptsDatos\Automatizacion.cs" />
     <Compile Include="Modelos\Medico.cs" />
     <Compile Include="Modelos\Paciente.cs" />
     <Compile Include="Modelos\Persona.cs" />
-    <Compile Include="Modelos\Registro.cs" />
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="ScriptsDatos\Registro.cs" />
+    <Compile Include="Vistas\FormPaciente.aspx.cs">
+      <DependentUpon>FormPaciente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="Vistas\FormPaciente.aspx.designer.cs">
+      <DependentUpon>FormPaciente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Vistas\FormMedico.aspx.cs">
       <DependentUpon>FormMedico.aspx</DependentUpon>
@@ -286,7 +294,8 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Jav.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

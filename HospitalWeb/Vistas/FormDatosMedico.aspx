@@ -75,7 +75,7 @@
         <div class ="row">
             <div class ="col-md-9">
                 <div class = "row">
-                    <div class="col-md-1" style="margin-top: 0.5%;">
+                    <div class="col-md-1" style="margin-top: 0.5%; width: 10%;">
                         <asp:Label CssClass="form-label" ID="lblNombre" runat="server" Text="Nombre:">                        
                         </asp:Label>
                     </div>
@@ -99,7 +99,7 @@
                     </div>                     
                 </div>
                 <div class="row" style="margin-top: 1.5%">
-                    <div class="col-md-1" style="margin-top: 0.5%;">
+                    <div class="col-md-1" style="margin-top: 0.5%; width: 10%;">
                         <asp:Label CssClass="form-label" ID="lbl" runat="server" Text="Nº col:">                        
                         </asp:Label>
                     </div>
@@ -125,7 +125,7 @@
                     </div> 
                 </div>
                 <div class="row" style="margin-top: 1.5%">
-                    <div class="col-md-1" style="margin-top: 0.5%;">
+                    <div class="col-md-1" style="margin-top: 0.5%;width: 10%;">
                         <asp:Label CssClass="form-label" ID="lblEmail" runat="server" Text="Email:">                        
                         </asp:Label>
                     </div>
@@ -149,7 +149,29 @@
                     </div>
             </div>
         </div>  
-        <div class="row" style="margin-top:3%;">
+        <div runat="server" id="divPacientesAsignados">
+            <div class="row">
+                <div class="col-md-4" style="margin-top: 0.5%;font-weight: bold;">
+                    <asp:Label  ID="lblPacientesAsignados" runat="server" Text="Pacientes asignados:">                        
+                    </asp:Label>               
+                </div>   
+                <div class ="col-md-12">                 
+                    <hr />
+                </div>
+            </div>
+            <div class="row" >            
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <asp:GridView ID="grdPaciente" runat="server" CssClass="table table-striped table-bordered table-condensed table-responsive table-hover" AllowPaging="true"
+                                      OnPageIndexChanging="grdPaciente_PageIndexChanging" OnRowDataBound="grdPaciente_RowDataBound">
+                            <PagerSettings Mode="NumericFirstLast" PageButtonCount="9" FirstPageText="<<" LastPageText=">>"/>  
+                            <PagerStyle CssClass="pag" HorizontalAlign="Left" />
+                        </asp:GridView>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        <div class="row">            
             <div class="d-flex justify-content-end">         
                 <div class="col-md-1 d-flex justify-content-end" style="margin-right:2px;">
                      <asp:Button CssClass="btn btn-primary" style="width: 100%;" ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click"/>

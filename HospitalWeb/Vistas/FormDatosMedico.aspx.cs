@@ -30,17 +30,32 @@ namespace HospitalWeb
             if (!IsPostBack)
             {
                 if (Request.QueryString["a"].Equals("1"))
+                {
                     bInsert = false;
+                }                    
                 else
+                {
                     bInsert = true;
+                }
 
-                if (!bInsert)                
-                    MapearMedicoToCampos();  
-                else 
+                if (!bInsert)
+                    MapearMedicoToCampos();
+                else
+                    divPacientesAsignados.Visible = false;
                     txtNumColegiado.Enabled = true;
                 
                 txtNombre.Focus();
             }            
+        }
+
+        protected void RellenarGrid()
+        {
+            var bindingList = new BindingList<Paciente>(CtrlPaciente.ObtenerPacientePorFiltro(8, oMedicoSeleccionado.NumColegiado.ToString()));
+
+            var source = new BindingSource(bindingList, null);
+
+            grdPaciente.DataSource = source;
+            grdPaciente.DataBind();            
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
@@ -56,6 +71,35 @@ namespace HospitalWeb
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("FormMedico.aspx");
+        }
+
+        protected void grdPaciente_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdPaciente.PageIndex = e.NewPageIndex;
+            RellenarGrid();
+        }
+
+        protected void grdPaciente_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                e.Row.Cells[2].Visible = false;
+                e.Row.Cells[3].Style.Add("display", "none !important");               
+                e.Row.Cells[7].Visible = false;
+                e.Row.Cells[11].Visible = false;
+            }
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Cells[2].Visible = false;
+                e.Row.Cells[3].Visible = false;               
+                e.Row.Cells[7].Visible = false;
+                e.Row.Cells[11].Visible = false;
+            }
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(grdPaciente, "Select$" + e.Row.RowIndex);
+                e.Row.ToolTip = "Click para seleccionar la fila.";
+            }
         }
 
         protected void MapearMedicoToCampos()
@@ -74,6 +118,7 @@ namespace HospitalWeb
             {
                 rbGenero.SelectedIndex = 1;
             }
+            RellenarGrid();
         }
 
         protected Medico MapearCamposToMedico()

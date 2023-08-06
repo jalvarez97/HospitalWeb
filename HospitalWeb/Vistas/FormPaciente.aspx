@@ -1,5 +1,4 @@
-﻿<%@ Page Title="Personas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormPersona.aspx.cs" Inherits="HospitalWeb.FormPersona" %>
-
+﻿<%@ Page Title="Personas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormPaciente.aspx.cs" Inherits="HospitalWeb.FormPaciente" EnableEventValidation="false" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <style>
@@ -66,7 +65,7 @@
     <main aria-labelledby="title">  
         <div class = "row">
             <div class ="col-md-12">
-                 <h2 id="title">Buscar (Todo)</h2>
+                 <h2 id="title">Buscar (Paciente)</h2>
             </div>
         </div>
         <div class ="row">            
@@ -79,28 +78,45 @@
                         <asp:ListItem>Dni</asp:ListItem>
                         <asp:ListItem>Email</asp:ListItem>
                         <asp:ListItem>Teléfono</asp:ListItem>
-                        <asp:ListItem>Ocupación</asp:ListItem>
+                        <asp:ListItem>Enfermedad</asp:ListItem>
+                        <asp:ListItem>Tratamiento</asp:ListItem>
+                        <asp:ListItem>Médico asignado</asp:ListItem>
                     </asp:DropDownList>
                 </div>
                 <div class="col-md-10">
                     <div class="input-group mb-3">
-                        <asp:TextBox style="max-width: 100% !important;" CssClass="form-control" ID="txtBuscar" runat="server"></asp:TextBox>
+                        <asp:TextBox style="max-width: 100% !important;" CssClass="form-control" ID="txtBuscar" runat="server" OnTextChanged="txtBuscar_TextChanged"></asp:TextBox>
                         <asp:Button CssClass="input-group-text" ID="btnBuscar" runat="server" Text="🔍" OnClick="btnBuscar_Click"/>                                            
-                    </div>       
-                </div>               
+                    </div>   
+                 </div>               
             </div>           
         </div>    
         <div class="row" style="margin-top: 1.5%">
             <div class="col-md-12">
                 <div class="table-responsive">
-                    <asp:GridView ID="grdPersonas" runat="server" CssClass="table table-striped table-bordered table-condensed table-responsive table-hover" AllowPaging="true" 
-                                  OnPageIndexChanging="grdPersonas_PageIndexChanging" OnRowDataBound="grdPersonas_RowDataBound" >
+                    <asp:GridView ID="grdPaciente" runat="server" CssClass="table table-striped table-bordered table-condensed table-responsive table-hover" AllowPaging="true"
+                                  OnPageIndexChanging="grdPaciente_PageIndexChanging" OnRowDataBound="grdPaciente_RowDataBound" OnSelectedIndexChanged="grdPaciente_SelectedIndexChanged">
                         <PagerSettings Mode="NumericFirstLast" PageButtonCount="9" FirstPageText="<<" LastPageText=">>"/>  
                         <PagerStyle CssClass="pag" HorizontalAlign="Left" />
                     </asp:GridView>
                 </div>
             </div>
         </div>
-
+        <div class="row" >
+            <div class="d-flex justify-content-end">       
+                <div class="col-md-1 d-flex justify-content-end" style="margin-right:2px;">
+                    
+                </div>
+                <div class="col-md-1 d-flex justify-content-end" style="margin-right:2px;">
+                     <asp:Button CssClass="btn btn-primary" style="width: 100%;" ID="btnCrear" runat="server" Text="Crear" OnClick="btnCrear_Click" />
+                </div>
+                <div class="col-md-1 d-flex justify-content-end" style="margin-right:2px;">
+                    <asp:Button CssClass="btn btn-primary" style="width: 100%;" ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificar_Click" Enabled="False" />
+                </div>
+                <div class="col-md-1 d-flex justify-content-end">
+                     <asp:Button CssClass="btn btn-primary" style="width: 100%;" ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" Enabled="False" />               
+                </div>             
+           </div>
+        </div>
     </main>
 </asp:Content>

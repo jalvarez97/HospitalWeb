@@ -1,10 +1,6 @@
-﻿using HospitalWeb.Modelos;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace HospitalWeb.Modelos
 {
@@ -24,8 +20,10 @@ namespace HospitalWeb.Modelos
         {
             List<Medico> lstAuxiliar = new List<Medico>();
             var compareInfo = CultureInfo.InvariantCulture.CompareInfo;
+            
             if (sValorBusqueda == null)
                 sValorBusqueda = "";
+            
             switch (nFiltroSeleccionado)
             {
                 case 0:

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
+    <title><%: Page.Title %> - Hospital</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -18,8 +18,8 @@
 
 </head>
 <body style="background:#1e4ea5b8;" >
-    <div class="d-flex justify-content-center" style="min-width: 700px;">
-        <form runat="server" class = "col-md-8 border rounded" style="max-width: 80%;background: ghostwhite; margin-top: 5%;margin-bottom: 5%;">
+    <div class="d-flex justify-content-center">
+        <form runat="server" class = "col-md-8 border rounded" style="max-width: 80%;background: ghostwhite;">
             <asp:ScriptManager runat="server">
                 <Scripts>
                     <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -48,9 +48,9 @@
                     </button>
                     <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item"><a class="nav-link" runat="server" href="~/Vistas/">Personas</a></li>
+                            <li class="nav-item"><a class="nav-link" runat="server" href="~/Vistas/FormPersona">Personas</a></li>
                             <li class="nav-item"><a class="nav-link" runat="server" href="~/Vistas/FormMedico">Médicos</a></li>
-                            <li class="nav-item"><a class="nav-link" runat="server" href="~/Vistas/FormDatos">Pacientes</a></li>
+                            <li class="nav-item"><a class="nav-link" runat="server" href="~/Vistas/FormPaciente">Pacientes</a></li>
                         </ul>
                     </div>
                 </div>

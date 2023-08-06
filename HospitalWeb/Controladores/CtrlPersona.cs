@@ -1,9 +1,6 @@
-﻿using HospitalWeb.Modelos;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace HospitalWeb.Modelos
 {

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace HospitalWeb
 {
-    public partial class FormMedico : Page
+    public partial class FormPaciente : Page
     {
         static Nullable<int> nIdSeleccionado = null;
        
@@ -30,12 +30,12 @@ namespace HospitalWeb
 
         protected void RellenarGrid()
         {
-            var bindingList = new BindingList<Medico>(CtrlMedico.ObtenerMedicoPorFiltro(cboFiltro.SelectedIndex, txtBuscar.Text));
+            var bindingList = new BindingList<Paciente>(CtrlPaciente.ObtenerPacientePorFiltro(cboFiltro.SelectedIndex, txtBuscar.Text));
             
             var source = new BindingSource(bindingList, null);
 
-            grdMedico.DataSource = source;
-            grdMedico.DataBind();
+            grdPaciente.DataSource = source;
+            grdPaciente.DataBind();
 
             if (!this.IsPostBack)
                 txtBuscar.Focus();
@@ -44,55 +44,54 @@ namespace HospitalWeb
         protected void cboFiltro_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtBuscar.Focus();
-            grdMedico.SelectedIndex = -1;
+            grdPaciente.SelectedIndex = -1;
             btnModificar.Enabled = false;
             btnEliminar.Enabled = false;
         }
 
         protected void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            grdMedico.SelectedIndex = -1;
+            grdPaciente.SelectedIndex = -1;
             btnModificar.Enabled = false;
             btnEliminar.Enabled = false;
         }
 
-        protected void grdMedico_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void grdPaciente_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            grdMedico.PageIndex = e.NewPageIndex;
+            grdPaciente.PageIndex = e.NewPageIndex;
             RellenarGrid();
-
         }
         
-        protected void grdMedico_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void grdPaciente_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.Header)
             {
-                e.Row.Cells[2].Style.Add("display", "none !important");
-                e.Row.Cells[6].Visible = false;
-                e.Row.Cells[10].Visible = false;
+                e.Row.Cells[3].Style.Add("display", "none !important");
+                e.Row.Cells[7].Visible = false;
+                e.Row.Cells[11].Visible = false;
             }
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Cells[2].Visible = false;
-                e.Row.Cells[6].Visible = false;
-                e.Row.Cells[10].Visible = false;
+                e.Row.Cells[3].Visible = false;
+                e.Row.Cells[7].Visible = false;
+                e.Row.Cells[11].Visible = false;
             }
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(grdMedico, "Select$" + e.Row.RowIndex);
+                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(grdPaciente, "Select$" + e.Row.RowIndex);
                 e.Row.ToolTip = "Click para seleccionar la fila.";
             }
         }
 
-        protected void grdMedico_SelectedIndexChanged(object sender, EventArgs e)
+        protected void grdPaciente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (GridViewRow row in grdMedico.Rows)
+            foreach (GridViewRow row in grdPaciente.Rows)
             {
-                if (row.RowIndex == grdMedico.SelectedIndex)
+                if (row.RowIndex == grdPaciente.SelectedIndex)
                 {
                     btnModificar.Enabled = true;
                     btnEliminar.Enabled = true;
-                    nIdSeleccionado = Convert.ToInt32(row.Cells[2].Text);
+                    nIdSeleccionado = Convert.ToInt32(row.Cells[3].Text);
                     row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                     row.ToolTip = string.Empty;
                 }
@@ -106,7 +105,7 @@ namespace HospitalWeb
 
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
-            grdMedico.SelectedIndex = -1;
+            grdPaciente.SelectedIndex = -1;
             btnModificar.Enabled = false;
             btnEliminar.Enabled = false;
             RellenarGrid();
@@ -114,17 +113,17 @@ namespace HospitalWeb
 
         protected void btnCrear_Click(object sender, EventArgs e)
         {
-            Response.Redirect("FormDatosMedico.aspx?a=" + 0);
+            Response.Redirect("FormDatosPaciente.aspx?a=" + 0);
         }
 
         protected void btnModificar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("FormDatosMedico.aspx?id=" + nIdSeleccionado + "&a=" + 1);
+            Response.Redirect("FormDatosPaciente.aspx?id=" + nIdSeleccionado + "&a=" + 1);
         }
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            CtrlMedico.EliminarMedico(nIdSeleccionado.ToString());
+            CtrlPaciente.EliminarPaciente(nIdSeleccionado.ToString());
             RellenarGrid();
         }
     

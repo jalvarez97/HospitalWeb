@@ -11,7 +11,7 @@ namespace HospitalWeb
 {
 
 
-    public partial class FormMedico
+    public partial class FormPaciente
     {
 
         /// <summary>
@@ -42,13 +42,13 @@ namespace HospitalWeb
         protected global::System.Web.UI.WebControls.Button btnBuscar;
 
         /// <summary>
-        /// Control grdMedico.
+        /// Control grdPaciente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdMedico;
+        protected global::System.Web.UI.WebControls.GridView grdPaciente;
 
         /// <summary>
         /// Control btnCrear.

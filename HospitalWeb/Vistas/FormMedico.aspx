@@ -83,29 +83,37 @@
                     </asp:DropDownList>
                 </div>
                 <div class="col-md-10">
-                    <asp:TextBox style="max-width: 100% !important;" CssClass="form-control" ID="txtBuscar" runat="server" OnTextChanged="txtBuscar_TextChanged"></asp:TextBox>
-                </div>               
+                    <div class="input-group mb-3">
+                        <asp:TextBox style="max-width: 100% !important;" CssClass="form-control" ID="txtBuscar" runat="server" OnTextChanged="txtBuscar_TextChanged"></asp:TextBox>
+                        <asp:Button CssClass="input-group-text" ID="btnBuscar" runat="server" Text="🔍" OnClick="btnBuscar_Click"/>                                            
+                    </div>   
+                 </div>               
             </div>           
         </div>    
         <div class="row" style="margin-top: 1.5%">
             <div class="col-md-12">
-                <asp:GridView ID="grdMedico" runat="server" class="table table-striped table-responsive" AllowPaging="true"
-                              OnPageIndexChanging="grdPersonas_PageIndexChanging" OnRowDataBound="grdPersonas_RowDataBound" OnSelectedIndexChanged="grdMedico_SelectedIndexChanged">
-                    <PagerSettings Mode="NumericFirstLast" PageButtonCount="9" FirstPageText="<<" LastPageText=">>"/>  
-                    <PagerStyle CssClass="pag" HorizontalAlign="Left" />
-                </asp:GridView>
+                <div class="table-responsive">
+                    <asp:GridView ID="grdMedico" runat="server" CssClass="table table-striped table-bordered table-condensed table-responsive table-hover" AllowPaging="true"
+                                  OnPageIndexChanging="grdMedico_PageIndexChanging" OnRowDataBound="grdMedico_RowDataBound" OnSelectedIndexChanged="grdMedico_SelectedIndexChanged">
+                        <PagerSettings Mode="NumericFirstLast" PageButtonCount="9" FirstPageText="<<" LastPageText=">>"/>  
+                        <PagerStyle CssClass="pag" HorizontalAlign="Left" />
+                    </asp:GridView>
+                </div>
             </div>
         </div>
         <div class="row" >
-            <div class="d-flex justify-content-end">         
+            <div class="d-flex justify-content-end">       
+                <div class="col-md-1 d-flex justify-content-end" style="margin-right:2px;">
+                    
+                </div>
                 <div class="col-md-1 d-flex justify-content-end" style="margin-right:2px;">
                      <asp:Button CssClass="btn btn-primary" style="width: 100%;" ID="btnCrear" runat="server" Text="Crear" OnClick="btnCrear_Click" />
                 </div>
                 <div class="col-md-1 d-flex justify-content-end" style="margin-right:2px;">
-                    <asp:Button CssClass="btn btn-primary" style="width: 100%;" ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificar_Click" />
+                    <asp:Button CssClass="btn btn-primary" style="width: 100%;" ID="btnModificar" runat="server" Text="Modificar" OnClick="btnModificar_Click" Enabled="False" />
                 </div>
                 <div class="col-md-1 d-flex justify-content-end">
-                     <asp:Button CssClass="btn btn-primary" style="width: 100%;" ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" />               
+                     <asp:Button CssClass="btn btn-primary" style="width: 100%;" ID="btnEliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" Enabled="False" />               
                 </div>             
            </div>
         </div>

@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using HospitalWeb.Modelos;
+using System.Collections.Generic;
 
-namespace HospitalWeb.Modelos
+namespace HospitalWeb
 {
     public static class Registro
     {     
@@ -10,7 +11,7 @@ namespace HospitalWeb.Modelos
 
         public static void GenerarRegistros()
         {
-            Automatizacion oAutomatiza = new Automatizacion();
+            Automatizacion oAutomatiza = new();
             Medicos.AddRange(oAutomatiza.GenerarMedicos(100));
             Pacientes.AddRange(oAutomatiza.GenerarPacientes(1000, Medicos, Medicos.Count));
             Personas.AddRange(Medicos);

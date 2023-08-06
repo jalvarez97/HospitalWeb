@@ -1,9 +1,8 @@
-﻿using System;
+﻿using HospitalWeb.Modelos;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace HospitalWeb.Modelos
+namespace HospitalWeb
 {
     public class Automatizacion
     {
@@ -37,13 +36,13 @@ namespace HospitalWeb.Modelos
             {
                 int nNombreMedico = rnd.Next(0, 14);
                 int nDecididor = rnd.Next(0, 1000);
-               
+                int nMail = rnd.Next(0, 100);
 
                 if (nDecididor % 2 == 0)                
                 {
                     string sNombre = lstNombrOcupacionsHombre[nNombreMedico];
                     oPersona = new Persona(i,sNombre, rnd.Next(18, 45), true
-                                          , rnd.Next(23401238, 777777777) + "M", sNombre + nNombreMedico + "@gmail.com", rnd.Next(638723799, 722999999), "");
+                                          , rnd.Next(23401238, 777777777) + "M", sNombre + nMail + "@gmail.com", rnd.Next(638723799, 722999999), "");
 
                     oMedico = new Medico(oPersona, rnd.Next(1000, 2500), lstEspecialidades[rnd.Next(0, 3)]);
                 }
@@ -51,7 +50,7 @@ namespace HospitalWeb.Modelos
                 {
                     string sNombre = lstNombrOcupacionsMujer[nNombreMedico];
                     oPersona = new Persona(i,sNombre, rnd.Next(18, 45), false
-                                          , rnd.Next(23401238, 777777777) + "W", sNombre + nNombreMedico + "@gmail.com", rnd.Next(638723799, 722999999), "");
+                                          , rnd.Next(23401238, 777777777) + "W", sNombre + nMail + "@gmail.com", rnd.Next(638723799, 722999999), "");
 
                     oMedico = new Medico(oPersona, rnd.Next(2500, 4000), lstEspecialidades[rnd.Next(0, 3)]);
                 }
@@ -72,12 +71,13 @@ namespace HospitalWeb.Modelos
             {
                 int nNombreMedico = rnd.Next(0, 14);
                 int nDecididor = rnd.Next(0, 1000);
-                
+                int nMail = rnd.Next(0, 100);
+
                 if (nDecididor % 2 == 0)
                 {
                     string sNombre = lstNombrOcupacionsHombre[nNombreMedico];
                     oPersona = new Persona(id,sNombre, rnd.Next(18, 45), true
-                                          , rnd.Next(23401238, 777777777) + "M", sNombre+ nNombreMedico+"@gmail.com", rnd.Next(638723799, 722999999), "");
+                                          , rnd.Next(23401238, 777777777) + "M", sNombre+ nMail + "@gmail.com", rnd.Next(638723799, 722999999), "");
 
                     oPaciente = new Paciente(oPersona, lstEnfermedades[rnd.Next(0, 4)], "Ibuprofeno");
                 }
@@ -85,7 +85,7 @@ namespace HospitalWeb.Modelos
                 {
                     string sNombre = lstNombrOcupacionsMujer[nNombreMedico];
                     oPersona = new Persona(id,sNombre, rnd.Next(18, 45), false
-                                          , rnd.Next(23401238, 777777777) + "W", sNombre + nNombreMedico + "@gmail.com", rnd.Next(638723799, 722999999), "");
+                                          , rnd.Next(23401238, 777777777) + "W", sNombre + nMail + "@gmail.com", rnd.Next(638723799, 722999999), "");
 
                     oPaciente = new Paciente(oPersona, lstEnfermedades[rnd.Next(0, 4)], "Ibuprofeno");
                 }
